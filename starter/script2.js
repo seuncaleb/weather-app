@@ -8,10 +8,20 @@ var unit ="&units=metric"
 var historyArr =[]
 
 // Build function that display current weather 
-function displayWeather(event){
-    event.preventDefault();
 
-    userInput = $('#search-input').val()
+function weather (event){
+   event.preventDefault();
+   userInput = $('#search-input').val()
+
+   displayWeather()
+
+}
+
+
+function displayWeather(){
+   
+
+    
     queryUrl = apiUrl+ "q=" + userInput + key + unit
 
     console.log(queryUrl)
@@ -45,8 +55,8 @@ function displayWeather(event){
         )
 forecast()
 
-$("#forecast").empty()
-$("#today").empty()
+ $("#forecast").empty()
+$("#today").empty() 
 
 // save users input to local storage and add to history list
 historyArr.push(userInput)
@@ -119,10 +129,19 @@ historyList(userInput)
 
  function lastLoaded (){
 
-    let userInputs =JSON.parse(localStorage.getItem("searchedCity"))
-    userInput = userInputs[0]
-    console.log(userInput)
-    //displayWeather()
+   $("ul").empty();
+   let sCity = JSON.parse(localStorage.getItem("searchedCity"));
+   if(sCity!==null){
+       sCity=JSON.parse(localStorage.getItem("searchedCity"));
+       for(i=0; i<sCity.length;i++){
+           historyList(sCity[i]);
+       }
+       userInput=sCity[i-1];
+      displayWeather()
+   }
+
+    
+   
    
  }
  console.log(JSON.parse(localStorage.getItem("searchedCity")))
@@ -130,8 +149,13 @@ historyList(userInput)
 
  
 
- function loadSearch (){
-    userInput = $('li').attr('city')
+ function loadSearch (event){
+   let liEl = event.target
+   if (event.target.matches('li')){
+
+      city =liEl.textContent.trim();
+     displayWeather()
+   }
    
 console.log(userInput)
      
@@ -140,8 +164,8 @@ console.log(userInput)
    
 
  // clicking segment 
-    $('#search-button').on("click", displayWeather)
-    $('.history-item').on("click", loadSearch)
+    $('#search-button').on("click", weather)
+    $(document).on("click", loadSearch)
     $(window).on("load", lastLoaded)
 
 
