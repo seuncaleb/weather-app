@@ -31,12 +31,12 @@ $(document).ready(function () {
       city.text(response.city.name + " " + "( " + date + " )");
 
       let temp = $("<p>");
-      temp.text("Temp: " + response.list[0].main.temp + " C");
+      temp.text("Temp: " + response.list[0].main.temp + " °C");
       let wind = $("<p>");
       wind.text("Wind: " + response.list[0].wind.speed + " Km/h");
       let humidity = $("<p>");
       humidity.text("Humidity: " + response.list[0].main.humidity + "%");
-
+      // building the Icon url
       let icon = $("<img>");
       let weathericon = response.list[0].weather[0].icon;
       let iconurl =
@@ -100,7 +100,7 @@ $(document).ready(function () {
 
         let temp = $("<p>");
 
-        temp.text("Temp: " + response.list[(i + 1) * 8 - 1].main.temp + " C");
+        temp.text("Temp: " + response.list[(i + 1) * 8 - 1].main.temp + " °C");
         let wind = $("<p>");
 
         wind.text(
@@ -111,7 +111,7 @@ $(document).ready(function () {
         humidity.text(
           "Humidity: " + response.list[(i + 1) * 8 - 1].main.humidity + "%"
         );
-
+        // building the Icon url
         let icon = $("<img>");
         let weathericon = response.list[(i + 1) * 8 - 1].weather[0].icon;
         let iconurl =
@@ -122,7 +122,7 @@ $(document).ready(function () {
         let forcast = $("<div>");
         forcast.attr("class", "col-md-2");
 
-        forcast.append(city, icon,  temp, humidity);
+        forcast.append(city, icon, temp, humidity);
 
         $("#forecast").append(forcast);
       }
@@ -133,11 +133,11 @@ $(document).ready(function () {
     $("ul").empty();
     let city = JSON.parse(localStorage.getItem("searchedCity"));
     if (city !== null) {
-      sCity = JSON.parse(localStorage.getItem("searchedCity"));
+      city = JSON.parse(localStorage.getItem("searchedCity"));
       for (i = 0; i < city.length; i++) {
         historyList(city[i]);
       }
-      userInput = city[i - 1];
+      userInput = city[i-1];
       displayWeather();
     }
   }
@@ -152,8 +152,6 @@ $(document).ready(function () {
 
     console.log(userInput);
   }
-
-  
 
   // clicking segment
   $("#search-button").on("click", weather);
