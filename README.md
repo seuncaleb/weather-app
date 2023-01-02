@@ -34,7 +34,7 @@ This week i built a web weather app using HTML, CSS, bootstrap, Jquery and Java 
 [ Repo link ](https://github.com/seuncaleb/weather-app) 
 
 ## Project Image
-[Screenshot](assets\127.0.0.1_5502_index.html.png)
+[Screenshot](./assets/screenshot%20weather%20app.png)
 
 ## Link to Project
 [ Project link ](https://seuncaleb.github.io/Codequiz/) 

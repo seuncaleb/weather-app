@@ -1,0 +1,30 @@
+li {
+
+    background-color: grey;
+    list-style: none;
+    padding: 5px;
+    margin: 2px;
+    color: aliceblue;
+}
+
+ul {
+
+    margin: 0;
+    padding: 0;
+}
+
+
+#search-button{
+
+    background-color: blue;
+    color: aliceblue;
+}
+
+
+
+.forcast-card{
+
+    color: aliceblue;
+    background-color: darkblue;
+}
+

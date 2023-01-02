@@ -10,9 +10,12 @@ $(document).ready(function () {
 
   function weather(event) {
     event.preventDefault();
-    userInput = $("#search-input").val();
-    historyList(userInput);
-    displayWeather();
+
+    if ($("#search-input").val() !== "") {
+      userInput = $("#search-input").val();
+      historyList(userInput);
+      displayWeather();
+    }
   }
 
   function displayWeather() {
@@ -49,9 +52,8 @@ $(document).ready(function () {
       let data = $("<div>");
       data.append(city, icon, temp, wind, humidity);
       data.attr("class", "col-12");
-      let heading = $("<h2>" + "Today" + "<h2>");
-      heading.attr("class", "col-12");
-      $("#today").append(heading, data);
+
+      $("#today").append(data);
     });
     forecast();
     saveHistory();
@@ -120,7 +122,7 @@ $(document).ready(function () {
         icon.attr("src", iconurl);
 
         let forcast = $("<div>");
-        forcast.attr("class", "col-md-2");
+        forcast.addClass("card-body col-md-2 border mr-1 forcast-card");
 
         forcast.append(city, icon, temp, humidity);
 
@@ -137,7 +139,7 @@ $(document).ready(function () {
       for (i = 0; i < city.length; i++) {
         historyList(city[i]);
       }
-      userInput = city[i-1];
+      userInput = city[i - 1];
       displayWeather();
     }
   }
