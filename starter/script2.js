@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // building the url for the Api
   var userInput = "";
-  var apiUrl = "http://api.openweathermap.org/data/2.5/forecast?";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?";
   var key = "&appid=e59cd40bbcdff38f1a572b109e5022e6";
   var unit = "&units=metric";
   var historyArr = [];
